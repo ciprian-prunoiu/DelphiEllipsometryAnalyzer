@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{2DC11F21-D588-447B-9770-4AC79C2C40EA}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiEllipsometryAnalyzer.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="EllipsometryAnalyzerTests.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiEllipsometryAnalyzer">
+        <MSBuild Projects="DelphiEllipsometryAnalyzer.dproj"/>
+    </Target>
+    <Target Name="DelphiEllipsometryAnalyzer:Clean">
+        <MSBuild Projects="DelphiEllipsometryAnalyzer.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiEllipsometryAnalyzer:Make">
+        <MSBuild Projects="DelphiEllipsometryAnalyzer.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="EllipsometryAnalyzerTests">
+        <MSBuild Projects="EllipsometryAnalyzerTests.dproj"/>
+    </Target>
+    <Target Name="EllipsometryAnalyzerTests:Clean">
+        <MSBuild Projects="EllipsometryAnalyzerTests.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EllipsometryAnalyzerTests:Make">
+        <MSBuild Projects="EllipsometryAnalyzerTests.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiEllipsometryAnalyzer;EllipsometryAnalyzerTests"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiEllipsometryAnalyzer:Clean;EllipsometryAnalyzerTests:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiEllipsometryAnalyzer:Make;EllipsometryAnalyzerTests:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
