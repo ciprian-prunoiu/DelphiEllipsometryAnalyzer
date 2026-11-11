@@ -14,7 +14,7 @@
 ## 📸 Main Window
 
 <p align="center">
-  <img src="docs/screenshots/main-window.png" alt="Main Window" width="800">
+  <img src="Docs/screenshots/main-window.png" alt="Main Window" width="800">
 </p>
 
 *The main interface: optical layer editor on the left, live $\Psi/\Delta$ spectrum on top, residual plot in the middle, and the raw data grid at the bottom.*
