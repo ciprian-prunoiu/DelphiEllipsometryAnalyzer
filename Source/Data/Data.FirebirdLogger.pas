@@ -95,7 +95,7 @@ begin
   FConnection.Params.Values['CharacterSet'] := 'UTF8';
 
   // Path to the native Firebird client (adjust if your installation differs)
-  FConnection.Params.Values['VendorLib'] := 'C:\Program Files\Firebird\Firebird_5_0\fbclient.dll';
+  FConnection.Params.Values['VendorLib'] := AConfig.Path_to_native_Firebird_client;
 
   FConnection.Params.Values['Protocol'] := 'Local';
 end;

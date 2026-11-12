@@ -17,7 +17,7 @@ type
   /// Firebird connection settings loaded from app.ini.
   /// </summary>
   TFirebirdConfig = record
-    Enabled: Boolean;
+    Path_to_native_Firebird_client:string;
     Server: string;
     Port: Integer;
     Database: string;
@@ -78,7 +78,6 @@ var
   DbPath: string;
 begin
   // Sensible defaults for local development
-  Result.Enabled := False;
   Result.Server := 'localhost';
   Result.Port := 3050;
   Result.Database := '';
@@ -91,7 +90,7 @@ begin
 
   Ini := TIniFile.Create(IniPath);
   try
-    Result.Enabled := Ini.ReadBool('Firebird', 'Enabled', False);
+    Result.Path_to_native_Firebird_client := Ini.ReadString('Firebird', 'Path_to_native_Firebird_client', 'C:\Program Files\Firebird\Firebird_5_0\fbclient.dll');
     Result.Server := Ini.ReadString('Firebird', 'Server', 'localhost');
     Result.Port := Ini.ReadInteger('Firebird', 'Port', 3050);
 
@@ -114,7 +113,7 @@ class function TAppConfig.TryLoadFirebird(out AConfig: TFirebirdConfig): Boolean
 begin
   AConfig := LoadFirebird;
   // Consider configuration valid only if logging is enabled and a database is set
-  Result := AConfig.Enabled and (AConfig.Database <> '');
+  Result := FileExists(AConfig.Path_to_native_Firebird_client) and (AConfig.Database <> '');
 end;
 
 end.
